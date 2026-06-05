@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>云计算课程设计</title>
+</head>
+<body>
+  <h1>云计算课程设计</h1>
+  <p>姓名：李浩洋 黄腾洋</p>
+  <p>学号：2023112430 2023112431</p>
+  <button onclick="ping()">测试后端 API</button>
+  <pre id="result"></pre>
+
+  <script>
+    async function ping() {
+      const res = await fetch('/api/ping');
+      const data = await res.json();
+      document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+    }
+  </script>
+</body>
+</html>

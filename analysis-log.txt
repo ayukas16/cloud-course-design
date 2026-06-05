@@ -1,0 +1,285 @@
+26/06/01 19:23:06 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/06/01 19:23:07 INFO SparkContext: Running Spark version 3.4.3
+26/06/01 19:23:08 INFO ResourceUtils: ==============================================================
+26/06/01 19:23:08 INFO ResourceUtils: No custom resources configured for spark.driver.
+26/06/01 19:23:08 INFO ResourceUtils: ==============================================================
+26/06/01 19:23:08 INFO SparkContext: Submitted application: DoubanAnalysis
+26/06/01 19:23:08 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(memoryOverhead -> name: memoryOverhead, amount: 128, script: , vendor: , cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 512, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+26/06/01 19:23:08 INFO ResourceProfile: Limiting resource is cpus at 1 tasks per executor
+26/06/01 19:23:08 INFO ResourceProfileManager: Added ResourceProfile id: 0
+26/06/01 19:23:08 INFO SecurityManager: Changing view acls to: spark
+26/06/01 19:23:08 INFO SecurityManager: Changing modify acls to: spark
+26/06/01 19:23:08 INFO SecurityManager: Changing view acls groups to: 
+26/06/01 19:23:08 INFO SecurityManager: Changing modify acls groups to: 
+26/06/01 19:23:08 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: spark; groups with view permissions: EMPTY; users with modify permissions: spark; groups with modify permissions: EMPTY
+26/06/01 19:23:08 INFO Utils: Successfully started service 'sparkDriver' on port 7078.
+26/06/01 19:23:08 INFO SparkEnv: Registering MapOutputTracker
+26/06/01 19:23:09 INFO SparkEnv: Registering BlockManagerMaster
+26/06/01 19:23:09 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+26/06/01 19:23:09 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+26/06/01 19:23:09 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+26/06/01 19:23:09 INFO DiskBlockManager: Created local directory at /var/data/spark-d127fba5-fa3b-4e6e-bf52-c6d6a3536ab0/blockmgr-4e8f78e9-f377-433a-bdde-9d2d1944948e
+26/06/01 19:23:09 INFO MemoryStore: MemoryStore started with capacity 117.0 MiB
+26/06/01 19:23:09 INFO SparkEnv: Registering OutputCommitCoordinator
+26/06/01 19:23:09 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+26/06/01 19:23:09 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+26/06/01 19:23:10 INFO SparkKubernetesClientFactory: Auto-configuring K8S client using current context from users K8S config file
+26/06/01 19:23:13 INFO ExecutorPodsAllocator: Going to request 1 executors from Kubernetes for ResourceProfile Id: 0, target: 1, known: 0, sharedSlotFromPendingPods: 2147483647.
+26/06/01 19:23:13 INFO ExecutorPodsAllocator: Found 0 reusable PVCs from 0 PVCs
+26/06/01 19:23:13 INFO BasicExecutorFeatureStep: Decommissioning not enabled, skipping shutdown script
+26/06/01 19:23:14 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 7079.
+26/06/01 19:23:14 INFO NettyBlockTransferService: Server created on pyspark-analysis-f5ea149e84a3a91c-driver-svc.default.svc 10.0.1.150:7079
+26/06/01 19:23:14 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+26/06/01 19:23:14 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, pyspark-analysis-f5ea149e84a3a91c-driver-svc.default.svc, 7079, None)
+26/06/01 19:23:14 INFO BlockManagerMasterEndpoint: Registering block manager pyspark-analysis-f5ea149e84a3a91c-driver-svc.default.svc:7079 with 117.0 MiB RAM, BlockManagerId(driver, pyspark-analysis-f5ea149e84a3a91c-driver-svc.default.svc, 7079, None)
+26/06/01 19:23:14 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, pyspark-analysis-f5ea149e84a3a91c-driver-svc.default.svc, 7079, None)
+26/06/01 19:23:14 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, pyspark-analysis-f5ea149e84a3a91c-driver-svc.default.svc, 7079, None)
+26/06/01 19:23:20 INFO KubernetesClusterSchedulerBackend$KubernetesDriverEndpoint: No executor found for 10.0.1.151:35074
+26/06/01 19:23:21 INFO KubernetesClusterSchedulerBackend$KubernetesDriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (10.0.1.151:35086) with ID 1,  ResourceProfileId 0
+26/06/01 19:23:21 INFO KubernetesClusterSchedulerBackend: SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.8
+26/06/01 19:23:21 INFO BlockManagerMasterEndpoint: Registering block manager 10.0.1.151:43967 with 117.0 MiB RAM, BlockManagerId(1, 10.0.1.151, 43967, None)
+
+==================== A-1 数据加载 ====================
+
+==================== Schema ====================
+root
+ |-- movie_id: string (nullable = true)
+ |-- title: string (nullable = true)
+ |-- original_title: string (nullable = true)
+ |-- year: string (nullable = true)
+ |-- rating_score: string (nullable = true)
+ |-- rating_count: string (nullable = true)
+ |-- genres: string (nullable = true)
+ |-- countries: string (nullable = true)
+ |-- directors: string (nullable = true)
+ |-- collect_count: string (nullable = true)
+ |-- summary: string (nullable = true)
+
+
+==================== 前5行 ====================
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------------------+------+------------+------------+--------------+-----------------+---------------+-------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|movie_id                                                                                                                                                                                              |title       |original_title          |year  |rating_score|rating_count|genres        |countries        |directors      |collect_count|summary                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------------------+------+------------+------------+--------------+-----------------+---------------+-------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|1292052                                                                                                                                                                                               |肖申克的救赎|The Shawshank Redemption|1994.0|9.7         |1992071     |犯罪/剧情     |美国             |弗兰克·德拉邦特|2866850      |20世纪40年代末，小有成就的青年银行家安迪（蒂姆·罗宾斯 Tim Robbins 饰）因涉嫌杀害妻子及她的情人而锒铛入狱。在这座名为肖申克的监狱内，希望似乎虚无缥缈，终身监禁的惩罚无疑注定了安迪接下来灰暗绝望的人生。未过多久，安迪尝试接近囚犯中颇有声望的瑞德（摩根·弗里曼 Morgan Freeman 饰），请求对方帮自己搞来小锤子。以此为契机，二人逐渐熟稔，安迪也仿佛在鱼龙混杂、罪恶横生、黑白混淆的牢狱中找到属于自己的求生之道。他利用自身的专业知识，帮助监狱管理层逃税、洗黑钱，同时凭借与瑞德的交往在犯人中间也渐渐受到礼遇。表面看来，他已如瑞德那样对那堵高墙从憎恨转变为处之泰然，但是对自由的渴望仍促使他朝着心中的希望和目标前进。而关于其罪行的真相，似乎更使这一切朝前推进了一步……|
+|本片根据著名作家斯蒂芬·金（Stephen Edwin King）的原著改编。©豆瓣"                                                                                                                                     |null        |null                    |null  |null        |null        |null          |null             |null           |null         |null                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+|1291546                                                                                                                                                                                               |霸王别姬    |霸王别姬                |1993.0|9.6         |1486938     |剧情/爱情/同性|中国大陆/中国香港|陈凯歌         |2266871      |段小楼（张丰毅）与程蝶衣（张国荣）是一对打小一起长大的师兄弟，两人一个演生，一个饰旦，一向配合天衣无缝，尤其一出《霸王别姬》，更是誉满京城，为此，两人约定合演一辈子《霸王别姬》。但两人对戏剧与人生关系的理解有本质不同，段小楼深知戏非人生，程蝶衣则是人戏不分。                                                                                                                                                                                                                                                                                                                                                                                                           |
+|段小楼在认为该成家立业之时迎娶了名妓菊仙（巩俐），致使程蝶衣认定菊仙是可耻的第三者，使段小楼做了叛徒，自此，三人围绕一出《霸王别姬》生出的爱恨情仇战开始随着时代风云的变迁不断升级，终酿成悲剧。©豆瓣"|null        |null                    |null  |null        |null        |null          |null             |null           |null         |null                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+|1292720                                                                                                                                                                                               |阿甘正传    |Forrest Gump            |1994.0|9.5         |1509559     |剧情/爱情     |美国             |罗伯特·泽米吉斯|2435797      |阿甘（汤姆·汉克斯 饰）于二战结束后不久出生在美国南方阿拉巴马州一个闭塞的小镇，他先天弱智，智商只有75，然而他的妈妈是一个性格坚强的女性，她常常鼓励阿甘“傻人有傻福”，要他自强不息。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------+------------------------+------+------------+------------+--------------+-----------------+---------------+-------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+only showing top 5 rows
+
+
+原始数据总行数: 117156
+
+==================== 缺失值比例 ====================
+movie_id: 缺失 3 行, 缺失比例 0.0000
+title: 缺失 45747 行, 缺失比例 0.3905
+original_title: 缺失 46929 行, 缺失比例 0.4006
+year: 缺失 49641 行, 缺失比例 0.4237
+rating_score: 缺失 51564 行, 缺失比例 0.4401
+rating_count: 缺失 48633 行, 缺失比例 0.4151
+genres: 缺失 54331 行, 缺失比例 0.4637
+countries: 缺失 49220 行, 缺失比例 0.4201
+directors: 缺失 58206 行, 缺失比例 0.4968
+collect_count: 缺失 49600 行, 缺失比例 0.4234
+summary: 缺失 68669 行, 缺失比例 0.5861
+
+==================== 自动识别字段 ====================
+title_col = title
+rating_col = rating_score
+year_col = year
+genre_col = genres
+director_col = directors
+country_col = None
+
+==================== 清洗结果 ====================
+清洗前行数: 117156
+清洗后行数: 63780
+删除行数: 53376
+
+==================== 清洗后统计信息 ====================
++-------+------------------+------------------+
+|summary|        rating_num|          year_num|
++-------+------------------+------------------+
+|  count|             63780|             61850|
+|   mean| 2.572470994042028|1998.3169442198869|
+| stddev|17.902534460996826|19.543340259488467|
+|    min|               0.0|              1931|
+|    max|            2002.0|              2021|
++-------+------------------+------------------+
+
+
+==================== 清洗后前5行 ====================
++--------------+----------+--------+--------------+---------------+-------------+
+|title_clean   |rating_num|year_num|genre_clean   |director_clean |country_clean|
++--------------+----------+--------+--------------+---------------+-------------+
+|这个杀手不太冷|9.4       |1994    |剧情/动作/犯罪|吕克·贝松      |Unknown      |
+|美丽人生      |9.5       |1997    |剧情/喜剧/爱情|罗伯托·贝尼尼  |Unknown      |
+|泰坦尼克号    |9.4       |1997    |剧情/爱情/灾难|詹姆斯·卡梅隆  |Unknown      |
+|海上钢琴师    |9.3       |1998    |剧情/音乐     |朱塞佩·托纳多雷|Unknown      |
+|机器人总动员  |9.3       |2008    |科幻/动画/冒险|安德鲁·斯坦顿  |Unknown      |
++--------------+----------+--------+--------------+---------------+-------------+
+only showing top 5 rows
+
+
+==================== A-2 查询1：按类型统计电影数量和平均评分 ====================
++--------------+-----------+----------+
+|genre         |movie_count|avg_rating|
++--------------+-----------+----------+
+|剧情          |10196      |2.49      |
+|Unknown       |5115       |3.3       |
+|喜剧          |3726       |1.54      |
+|恐怖          |3319       |0.81      |
+|剧情/爱情     |1843       |3.04      |
+|动画          |1491       |2.28      |
+|动作          |1483       |1.15      |
+|喜剧/爱情     |1341       |2.74      |
+|惊悚          |978        |1.9       |
+|剧情/喜剧     |974        |2.71      |
+|爱情          |945        |2.29      |
+|惊悚/恐怖     |766        |1.47      |
+|喜剧/剧情     |710        |3.09      |
+|剧情/惊悚     |565        |2.86      |
+|剧情/喜剧/爱情|558        |2.77      |
+|剧情/犯罪     |548        |1.98      |
+|科幻          |545        |1.21      |
+|剧情/动作     |481        |1.69      |
+|犯罪          |474        |0.64      |
+|音乐          |464        |1.89      |
++--------------+-----------+----------+
+
+
+==================== A-2 查询2：评分最高的Top 10电影 ====================
++-----------------------------------+------+----+-----------------------------------------------------------------+
+|title                              |rating|year|genre                                                            |
++-----------------------------------+------+----+-----------------------------------------------------------------+
+| Milan                             |2002.0|null|Unknown                                                          |
+| London                            |2000.0|null|Unknown                                                          |
+| but even better is the second disc|1969.0|null|the video is often dark (and sometimes limited to a single camera|
+|听我说，请听我说                   |1958.0|null|35                                                               |
+|我的哥哥理查德                     |1957.0|null|45                                                               |
+| DVDs                              |516.0 |null|Unknown                                                          |
+|张国荣热·情演唱会                  |9.8   |2000|纪录片/音乐/歌舞                                                 |
+|唱游大世界王菲香港演唱会98-99      |9.8   |1999|纪录片/音乐                                                      |
+|是，大臣 1984圣诞特辑              |9.8   |1984|喜剧                                                             |
+|肖申克的救赎                       |9.7   |1994|犯罪/剧情                                                        |
++-----------------------------------+------+----+-----------------------------------------------------------------+
+
+
+==================== A-2 查询3：按年份统计电影数量和平均评分 ====================
++----+-----------+----------+
+|year|movie_count|avg_rating|
++----+-----------+----------+
+|1931|1          |9.3       |
+|1936|1          |9.3       |
+|1939|1          |9.3       |
+|1940|1          |8.8       |
+|1943|42         |1.22      |
+|1944|158        |1.22      |
+|1945|155        |1.54      |
+|1946|176        |1.24      |
+|1947|193        |1.5       |
+|1948|214        |1.79      |
+|1949|208        |1.52      |
+|1950|223        |1.42      |
+|1951|244        |1.57      |
+|1952|253        |1.38      |
+|1953|307        |1.33      |
+|1954|269        |1.48      |
+|1955|276        |1.62      |
+|1956|311        |1.51      |
+|1957|349        |1.41      |
+|1958|357        |1.56      |
+|1959|399        |1.25      |
+|1960|379        |1.54      |
+|1961|341        |1.41      |
+|1962|353        |1.9       |
+|1963|167        |1.55      |
+|1965|1          |9.0       |
+|1966|322        |1.86      |
+|1967|383        |1.52      |
+|1968|439        |1.42      |
+|1969|442        |1.7       |
+|1970|459        |1.51      |
+|1971|488        |1.75      |
+|1972|472        |1.55      |
+|1973|516        |1.55      |
+|1974|523        |1.49      |
+|1975|514        |1.62      |
+|1976|526        |1.67      |
+|1977|488        |1.61      |
+|1978|520        |1.37      |
+|1979|577        |1.93      |
+|1980|611        |1.77      |
+|1981|389        |1.82      |
+|1982|4          |5.63      |
+|1983|330        |2.12      |
+|1984|566        |2.39      |
+|1985|623        |2.3       |
+|1986|615        |2.35      |
+|1987|748        |2.25      |
+|1988|703        |2.26      |
+|1989|797        |2.42      |
++----+-----------+----------+
+
+
+==================== A-2 查询4：窗口函数，每年评分最高电影 ====================
++----+--------------------------------+------+------------------+
+|year|title                           |rating|genre             |
++----+--------------------------------+------+------------------+
+|1931|城市之光                        |9.3   |喜剧/剧情/爱情    |
+|1936|摩登时代                        |9.3   |剧情/喜剧/爱情    |
+|1939|乱世佳人                        |9.3   |剧情/历史/爱情    |
+|1940|魂断蓝桥                        |8.8   |剧情/爱情/战争    |
+|1943|复仇之日                        |8.4   |剧情/恐怖/爱情    |
+|1944|双重赔偿                        |8.5   |犯罪/黑色电影/惊悚|
+|1945|天堂的孩子                      |8.6   |剧情/爱情         |
+|1946|擦鞋童                          |8.6   |剧情              |
+|1947|凡尔杜先生                      |8.7   |喜剧/犯罪/剧情    |
+|1948|偷自行车的人                    |9.0   |犯罪/剧情         |
+|1949|哀乐中年                        |9.2   |剧情/爱情/家庭    |
+|1950|罗生门                          |8.8   |Unknown           |
+|1951|倒扣的王牌                      |8.7   |剧情/黑色电影     |
+|1952|生之欲                          |9.1   |剧情              |
+|1953|东京物语                        |9.2   |剧情/家庭         |
+|1954|十二怒汉（电视版）              |9.5   |剧情/犯罪/悬疑    |
+|1955|莫扎特 歌剧《唐·乔万尼》（唐璜）|9.0   |音乐/喜剧/剧情    |
+|1956|夜之河                          |8.9   |剧情              |
+|1957|控方证人                        |9.6   |剧情/犯罪/悬疑    |
+|1958|穆桂英挂帅                      |9.0   |剧情              |
+|1959|热情如火                        |8.8   |喜剧              |
+|1960|女人步上楼梯时                  |9.1   |剧情              |
+|1961|大闹天宫                        |9.3   |动画/奇幻         |
+|1962|红楼梦                          |9.0   |剧情/爱情/古装    |
+|1963|大逃亡                          |8.4   |Unknown           |
+|1965|音乐之声                        |9.0   |剧情/传记/爱情    |
+|1966|虎口脱险                        |8.9   |Unknown           |
+|1967|马拉/萨德                       |9.0   |剧情/音乐/历史    |
+|1968|2001太空漫游                    |8.8   |科幻/惊悚/冒险    |
+|1969|皮罗斯马尼                      |9.0   |剧情/传记         |
+|1970|同流者                          |8.6   |Unknown           |
+|1971|跑道终点                        |8.7   |剧情              |
+|1972|教父                            |9.3   |剧情/犯罪         |
+|1973|婚姻生活                        |9.0   |剧情/爱情         |
+|1974|教父2                           |9.2   |剧情/犯罪         |
+|1975|飞越疯人院                      |9.1   |剧情              |
+|1976|从容的快板                      |8.8   |动画/喜剧/奇幻    |
+|1977|史努比的惊险夏令营              |9.1   |动画/冒险/家庭    |
+|1978|秋日奏鸣曲                      |9.0   |剧情              |
+|1979|哪吒闹海                        |9.1   |冒险/动画/奇幻    |
+|1980|影武者                          |9.0   |剧情/历史/战争    |
+|1981|鬼太鼓座                        |8.8   |纪录片            |
+|1982|E.T. 外星人                     |8.6   |剧情/科幻         |
+|1983|Abhilasha                       |9.3   |惊悚              |
+|1984|是，大臣 1984圣诞特辑           |9.8   |喜剧              |
+|1985|天下一家                        |9.6   |音乐              |
+|1986|马斯格雷夫仪式                  |9.3   |犯罪/悬疑         |
+|1987|北国之恋：1987初恋              |9.5   |剧情              |
+|1988|张国荣88演唱会                  |9.5   |纪录片/音乐       |
+|1989|张国荣告别演唱会                |9.7   |纪录片/音乐/歌舞  |
++----+--------------------------------+------+------------------+
+
+
+==================== A-3 PySpark 查询耗时 ====================
+PySpark query time: 3.8688 seconds
+26/06/01 19:24:42 WARN ExecutorPodsWatchSnapshotSource: Kubernetes client has been closed.
